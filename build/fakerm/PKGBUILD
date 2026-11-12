@@ -1,0 +1,16 @@
+# Maintainer: v1sta <realv1sta1233@gmail.com>
+pkgname=fakerm
+pkgver=1.0
+pkgrel=1
+pkgdesc="deletes your system (not quite)"
+arch=('any')
+license=('MIT')
+source=('fakerm.sh')
+sha256sums=('SKIP')
+package() {
+    cd "$srcdir"
+    install -Dm755 fakerm.sh "$pkgdir/usr/bin/$pkgname"
+
+}
+
+
