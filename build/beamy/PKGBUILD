@@ -1,0 +1,22 @@
+# Maintainer: v1sta <realv1sta1233@gmail.com>
+
+pkgname=beamy
+
+pkgver=1.0
+
+pkgrel=1
+
+pkgdesc="Beamy package"
+
+arch=('any')
+
+license=('MIT')
+
+source=('beamy.sh')
+
+sha256sums=('SKIP')
+
+package() {
+    cd "$srcdir"
+    install -Dm755 beamy.sh "$pkgdir/usr/bin/$pkgname"
+}

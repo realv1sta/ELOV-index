@@ -1,0 +1,22 @@
+pkgname=lfsinstaller
+
+pkgver=1.0
+
+pkgrel=1
+
+pkgdesc="installs linux from scratch maybe"
+
+arch=('any')
+
+license=('MIT')
+
+source=('lfsinstaller.sh')
+
+sha256sums=('SKIP')
+
+package() {
+    cd "$srcdir"
+    # Install and rename into the system path
+    install -Dm755 lfsinstaller.sh "$pkgdir/usr/bin/$pkgname"
+
+}

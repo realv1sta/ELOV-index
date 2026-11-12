@@ -1,0 +1,22 @@
+# Maintainer: v1sta <realv1sta1233@gmail.com>
+
+pkgname=pisa-popa-kaka
+
+pkgver=1.0
+
+pkgrel=1
+
+pkgdesc="Pisa Popa Kaka"
+
+arch=('any')
+
+license=('MIT')
+
+source=('pisa.sh')
+
+sha256sums=('SKIP')
+
+package() {
+    cd "$srcdir"
+    install -Dm755 pisa.sh "$pkgdir/usr/bin/$pkgname"
+}

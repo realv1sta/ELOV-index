@@ -1,0 +1,22 @@
+# Maintainer: v1sta <realv1sta1233@gmail.com>
+
+pkgname=victo
+
+pkgver=1.0
+
+pkgrel=1
+
+pkgdesc="Mcdonalds."
+
+arch=('any')
+
+license=('MIT')
+
+source=('victo.sh')
+
+sha256sums=('SKIP')
+
+package() {
+    cd "$srcdir"
+    install -Dm755 victo.sh "$pkgdir/usr/bin/$pkgname"
+}

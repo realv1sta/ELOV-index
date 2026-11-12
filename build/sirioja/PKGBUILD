@@ -1,0 +1,22 @@
+# Maintainer: v1sta <realv1sta1233@gmail.com>
+
+pkgname=sirioja
+
+pkgver=1.0
+
+pkgrel=1
+
+pkgdesc="*blurred out*"
+
+arch=('any')
+
+license=('MIT')
+
+source=('sirioja.sh')
+
+sha256sums=('SKIP')
+
+package() {
+    cd "$srcdir"
+    install -Dm755 sirioja.sh "$pkgdir/usr/bin/$pkgname"
+}

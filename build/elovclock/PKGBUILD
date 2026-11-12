@@ -1,0 +1,21 @@
+# Maintainer: v1sta <realv1sta1233@gmail.com>
+pkgname=elovclock
+pkgver=1.0
+pkgrel=1
+pkgdesc="My recreation of peaclock in python"
+arch=('any')
+license=('MIT')
+depends=('python')
+source=("main.py"
+        "num.py")
+sha256sums=('8d00dfaaa7367b5830c4acb221cae2b9c5acff329381916b5693ec5b9843d341'
+            '1c46e4eb2fa3626c83ca701dbde372e98817584a30131cc3dded8fa99bee0d0f')
+
+package() {
+    install -dm755 "$pkgdir/usr/lib/$pkgname"
+    install -m644 "$srcdir/num.py" "$pkgdir/usr/lib/$pkgname/"
+    install -m755 "$srcdir/main.py" "$pkgdir/usr/lib/$pkgname/main.py"
+
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s "/usr/lib/$pkgname/main.py" "$pkgdir/usr/bin/elovclock"
+}
