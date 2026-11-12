@@ -1,0 +1,22 @@
+# Maintainer: v1sta <realv1sta1233@gmail.com>
+
+pkgname=fly-facts
+
+pkgver=1.0
+
+pkgrel=1
+
+pkgdesc="Fun facts about airplanes."
+
+arch=('any')
+
+license=('MIT')
+
+source=('fly-facts.sh')
+
+sha256sums=('SKIP')
+
+package() {
+    cd "$srcdir"
+    install -Dm755 fly-facts.sh "$pkgdir/usr/bin/$pkgname"
+}
