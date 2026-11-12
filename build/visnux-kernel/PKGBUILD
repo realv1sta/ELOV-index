@@ -1,0 +1,40 @@
+pkgbase=visnux-kernel
+pkgname=('visnux-kernel' 'visnux-kernel-headers')
+pkgver=7.2.15
+pkgrel=1
+arch=('x86_64')
+url="https://visnux.org"
+license=('GPL2')
+depends=('coreutils' 'kmod' 'initramfs')
+options=('!strip')
+
+package_visnux-kernel() {
+    pkgdesc="Visnux Custom Linux Kernel for gaming and development"
+    depends=('coreutils' 'kmod' 'initramfs')
+    provides=('kernel=7.2.15')
+
+    cd "$HOME/kernelbuild/linux-7.2.15"
+
+    # Install kernel modules into package directory
+    local _dest="${pkgdir}/usr/lib/modules/${pkgver}-visnux"
+    install -dm755 "$_dest"
+    make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
+
+    # Remove temporary symlinks
+    rm -f "$_dest/source" "$_dest/build"
+
+    # Install the kernel image (bzImage) to boot
+    install -dm755 "${pkgdir}/boot"
+    cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgver}-visnux"
+}
+
+package_visnux-kernel-headers() {
+    pkgdesc="Header files and scripts for building modules for Visnux kernel"
+    cd "$HOME/kernelbuild/linux-7.2.15"
+    local _builddir="${pkgdir}/usr/lib/modules/${pkgver}-visnux/build"
+    
+    install -dm755 "$_builddir"
+    cp Makefile Module.symvers System.map vmlinux.h "$_builddir" 2>/dev/null || true
+    cp -t "$_builddir" -r include arch
+    find "$_builddir" -type f -name "*.o" -delete
+}
