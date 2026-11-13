@@ -1,0 +1,22 @@
+# Maintainer: v1sta <realv1sta1233@gmail.com>
+
+pkgname=wedding
+
+pkgver=1.0
+
+pkgrel=1
+
+pkgdesc="Wedding simulator"
+
+arch=('any')
+
+license=('MIT')
+
+source=('wedding.sh')
+
+sha256sums=('SKIP')
+
+package() {
+    cd "$srcdir"
+    install -Dm755 wedding.sh "$pkgdir/usr/bin/$pkgname"
+}
