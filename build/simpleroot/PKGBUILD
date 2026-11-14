@@ -3,7 +3,7 @@
 
 pkgname=simpleroot
 
-pkgver=1.0
+pkgver=2.0
 
 pkgrel=1
 
@@ -19,6 +19,5 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir"
-    # Install and rename into the system path
     install -Dm755 simpleroot.sh "$pkgdir/usr/bin/$pkgname"
 }
